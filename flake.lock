@@ -39,7 +39,24 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "smarttab-kak": "smarttab-kak"
+      }
+    },
+    "smarttab-kak": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649581983,
+        "narHash": "sha256-STLZSwQPM+gTnkA+FQOF4I0ifPTjQWpEc/95JRzvIqU=",
+        "owner": "andreyorst",
+        "repo": "smarttab.kak",
+        "rev": "86ac6599b13617ff938905ba4cdd8225d7eb6a2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andreyorst",
+        "repo": "smarttab.kak",
+        "type": "github"
       }
     }
   },
