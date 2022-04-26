@@ -13,11 +13,15 @@
       extraConfig = builtins.readFile ./kakrc;
     };
 
-    git = {
-      enable = true;
-      userName = "rotaerk";
-      userEmail = "m.scott.stewart@gmail.com";
-    };
-
+    git =
+      let
+        gitPkg = pkgs.git.override { withLibsecret = true; };
+      in {
+        enable = true;
+        userName = "rotaerk";
+        userEmail = "m.scott.stewart@gmail.com";
+        package = gitPkg;
+        extraConfig.credential.helper = "${gitPkg}/bin/git-credential-libsecret";
+      };
   };
 }
