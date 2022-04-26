@@ -17,7 +17,6 @@
       enable = true;
       userName = "rotaerk";
       userEmail = "m.scott.stewart@gmail.com";
-      extraConfig.credential.helper = "store";
     };
   };
 }
