@@ -7,21 +7,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    #kakoune plugins
-    smarttab-kak = {
-      url = "github:andreyorst/smarttab.kak";
-      flake = false;
-    };
   };
 
-  outputs = flakeInputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       username = "rotaerk";
     in {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        configuration = import ./home.nix { inherit flakeInputs; };
+        configuration = import ./home.nix;
 
         inherit system username;
         homeDirectory = "/home/${username}";
