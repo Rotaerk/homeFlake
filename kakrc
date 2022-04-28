@@ -17,3 +17,5 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 hook global WinSetOption filetype=(haskell) %{
   lsp-enable-window
 }
+
+map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
