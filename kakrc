@@ -11,3 +11,9 @@ hook global ModuleLoaded smarttab %{
 
 hook global BufOpenFile .* expandtab
 hook global BufNewFile .* expandtab
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+
+hook global WinSetOption filetype=(haskell) %{
+  lsp-enable-window
+}

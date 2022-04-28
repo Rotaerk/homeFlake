@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 {
-  home.packages = [ pkgs.nix-prefetch-github ];
+  home = {
+    packages = with pkgs; [ nix-prefetch-github kak-lsp ];
+
+    file = {
+      ".config/kak-lsp/kak-lsp.toml".source = "${pkgs.kak-lsp.src}/kak-lsp.toml";
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
