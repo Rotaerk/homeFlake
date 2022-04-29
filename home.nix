@@ -1,10 +1,16 @@
 { config, pkgs, ... }:
+let
+  kak-lsp = pkgs.callPackage ./kak-lsp.nix { inherit (pkgs.darwin.apple_sdk.frameworks) Security SystemConfiguration; };
+in
 {
   home = {
-    packages = with pkgs; [ nix-prefetch-github kak-lsp ];
+    packages = [
+      pkgs.nix-prefetch-github
+      kak-lsp
+    ];
 
     file = {
-      ".config/kak-lsp/kak-lsp.toml".source = "${pkgs.kak-lsp.src}/kak-lsp.toml";
+      ".config/kak-lsp/kak-lsp.toml".source = "${kak-lsp.src}/kak-lsp.toml";
     };
   };
 
