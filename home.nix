@@ -1,6 +1,25 @@
 { config, pkgs, ... }:
+
 let
-  kak-lsp = pkgs.callPackage ./kak-lsp.nix { inherit (pkgs.darwin.apple_sdk.frameworks) Security SystemConfiguration; };
+  kak-lsp = pkgs.kak-lsp.overrideAttrs (attrs: rec {
+    name = "${attrs.pname}-${version}";
+    version = "12.2.0";
+
+    # generated with: nix-prefetch-github --nix kak-lsp kak-lsp --rev v<version>
+    src = pkgs.fetchFromGitHub {
+      owner = "kak-lsp";
+      repo = "kak-lsp";
+      rev = "v${version}";
+      sha256 = "Il3eF9bVrAaJkTDPB1DzEjROnJxIAnnk27qdT9qsp1k=";
+    };
+
+    cargoDeps = attrs.cargoDeps.overrideAttrs (cdattrs: {
+      name = "${name}-vendor.tar.gz";
+      inherit src;
+      # Use this to obtain the hash after changing the revision.
+      outputHash = "sha256-wRjPjCKsvqnJkybNVAdVMgBA9RaviFyCJPv3D5hipSs=";
+    });
+  });
 in
 {
   home = {
