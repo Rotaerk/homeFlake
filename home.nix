@@ -9,15 +9,14 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "kak-lsp";
       repo = "kak-lsp";
-      rev = "v${version}";
-      sha256 = "Il3eF9bVrAaJkTDPB1DzEjROnJxIAnnk27qdT9qsp1k=";
+      rev = "ed1fb46a7ce0821e11ad96da31b12b917dbdb245";
+      sha256 = "jeOeUsnZ45VCg2bqNHNVQ5DS9CFSrXGc7BjknqR7m6c=";
     };
 
     cargoDeps = attrs.cargoDeps.overrideAttrs (cdattrs: {
       name = "${name}-vendor.tar.gz";
       inherit src;
-      # Use this to obtain the hash after changing the revision.
-      outputHash = "sha256-wRjPjCKsvqnJkybNVAdVMgBA9RaviFyCJPv3D5hipSs=";
+      outputHash = "sha256-tXFzYdB3vIIWaxUmDDQSLpYoWEA6MhVloY50+H52P14=";
     });
   });
 in
