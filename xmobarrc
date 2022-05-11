@@ -1,0 +1,47 @@
+Config {
+  font = "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true",
+  bgColor = "black",
+  fgColor = "grey",
+  commands =
+    [
+      Run Weather "KTHV" [
+        "-t", "<fc=#4488FB><tempF></fc>°F <skyCondition>"
+      ] 36000,
+      Run MultiCpu [
+        "-t", "<total>% <autovbar>",
+        "--Low", "40",
+        "--High", "85",
+        "--low", "darkgreen",
+        "--normal", "darkorange",
+        "--high", "darkred"
+      ] 10,
+      Run MultiCoreTemp [
+        "-t", "<max>°C",
+        "--Low", "60",
+        "--High", "80",
+        "--low", "darkgreen",
+        "--normal", "darkorange",
+        "--high", "darkred",
+        "--",
+        "--mintemp", "20", "--maxtemp", "100"
+      ] 50,
+      Run Memory [
+        "-t", "<usedratio>%",
+        "--Low", "20",
+        "--High", "90",
+        "--low", "darkgreen",
+        "--normal", "darkorange",
+        "--high", "darkred"
+      ] 10,
+      Run Date "%a %b %_d %l:%M" "date" 10,
+      Run Kbd [
+        ("us(dvorak)", "<fc=#4488FB>DV</fc>"),
+        ("us", "<fc=#ee0000>US</fc>")
+      ],
+      Run Locks,
+      Run StdinReader
+    ],
+  sepChar = "@",
+  alignSep = "}{",
+  template = "@StdinReader@ }{ CPU: @multicoretemp@ @multicpu@ | Mem: @memory@ | <fc=#4488FB>@date@</fc> | @KTHV@ | <fc=#ee9a00>@locks@</fc> @kbd@"
+}
