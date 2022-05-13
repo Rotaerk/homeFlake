@@ -1,57 +1,28 @@
 { nur }:
 { config, pkgs, ... }:
-
-let
-  pkgsLocal = {
-    kak-lsp = pkgs.kak-lsp.overrideAttrs (attrs: rec {
-      name = "${attrs.pname}-${version}";
-      version = "12.2.0";
-
-      # generated with: nix-prefetch-github --nix kak-lsp kak-lsp --rev v<version>
-      src = pkgs.fetchFromGitHub {
-        owner = "kak-lsp";
-        repo = "kak-lsp";
-        rev = "ed1fb46a7ce0821e11ad96da31b12b917dbdb245";
-        sha256 = "jeOeUsnZ45VCg2bqNHNVQ5DS9CFSrXGc7BjknqR7m6c=";
-      };
-
-      cargoDeps = attrs.cargoDeps.overrideAttrs (cdattrs: {
-        name = "${name}-vendor.tar.gz";
-        inherit src;
-        outputHash = "sha256-tXFzYdB3vIIWaxUmDDQSLpYoWEA6MhVloY50+H52P14=";
-      });
-    });
-  };
-in
 {
   nixpkgs = {
     config.allowUnfreePredicate = _: true;
     overlays = [ nur.overlay ];
   };
 
-  home.packages =
-    (with pkgs; [
-      discord
-      dmenu
-      nix-prefetch-github
-      shutter
-    ]) ++
-    (with pkgsLocal; [
-      kak-lsp
-    ]);
+  imports = [
+    ./gpg
+    ./kakoune
+    ./xmobar
+    ./xmonad
+  ];
 
-  xdg.configFile = {
-    "kak-lsp/kak-lsp.toml".source = "${pkgsLocal.kak-lsp.src}/kak-lsp.toml";
-  };
+  home.packages = with pkgs; [
+    bashmount
+    discord
+    dmenu
+    spectacle
+    nix-prefetch-github
+  ];
 
   xsession = {
     enable = true;
-
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      config = ./xmonad.hs;
-    };
 
     profileExtra = ''
       # disable Display Power Management Service
@@ -94,15 +65,11 @@ in
       userEmail = "m.scott.stewart@gmail.com";
     };
 
-    kakoune = {
+    password-store = {
       enable = true;
-      extraConfig = builtins.readFile ./kakrc;
-      plugins = map pkgs.kakouneUtils.buildKakounePluginFrom2Nix (import ./kakPlugins.nix pkgs);
-    };
-
-    xmobar = {
-      enable = true;
-      extraConfig = builtins.readFile ./xmobarrc;
+      settings = {
+        PASSWORD_STORE_DIR = "/run/media/rotaerk/A45B-3882/.password-store";
+      };
     };
   };
 }
