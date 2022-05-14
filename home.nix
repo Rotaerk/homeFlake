@@ -17,7 +17,9 @@
     bashmount
     discord
     dmenu
+    ncpamixer
     nix-prefetch-github
+    pavucontrol
     spectacle
     trayer
     xsel
