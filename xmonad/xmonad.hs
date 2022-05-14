@@ -26,6 +26,10 @@ main =
 
     layoutHook = smartBorders $ layoutHook def
   }
+  `removeKeysP`
+  [
+    "M-q" -- I use home manager to reload config.  Using this keybinding gets in its way.
+  ]
   `additionalKeysP`
   [
   ]

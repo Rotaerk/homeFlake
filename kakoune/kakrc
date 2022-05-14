@@ -19,3 +19,21 @@ hook global WinSetOption filetype=(haskell) %{
 }
 
 map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+
+# Copy/paste X primary selection.
+map global user p '<a-!>xsel -op<ret>' -docstring "Append X primary selection"
+map global user P '!xsel -op<ret>' -docstring "Insert X primary selection"
+map global user R 'd!xsel -op<ret>' -docstring "Replace with X primary selection"
+map global user y '<a-|>xsel -ip<ret>' -docstring "Set as X primary selection" 
+map global user v 'i<ret><esc>h!xsel -op<ret>uUyup' -docstring "Append X primary selection lines"
+map global user V 'i<ret><esc>h!xsel -op<ret>uUyuP' -docstring "Insert X primary selection lines"
+
+declare-user-mode clipboard
+map global clipboard p '<a-!>xsel -ob<ret>' -docstring "Append X clipboard selection"
+map global clipboard P '!xsel -ob<ret>' -docstring "Insert X clipboard selection"
+map global clipboard R 'd!xsel -ob<ret>' -docstring "Replace with X clipboard selection"
+map global clipboard y '<a-|>xsel -ib<ret>' -docstring "Set as X clipboard selection" 
+map global clipboard v 'i<ret><esc>h!xsel -ob<ret>uUyup' -docstring "Append X clipboard selection lines"
+map global clipboard V 'i<ret><esc>h!xsel -ob<ret>uUyuP' -docstring "Insert X clipboard selection lines"
+
+map global user c %{: enter-user-mode clipboard<ret>} -docstring "Clipboard mode"

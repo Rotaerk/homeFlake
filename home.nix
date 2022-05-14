@@ -17,8 +17,10 @@
     bashmount
     discord
     dmenu
-    spectacle
     nix-prefetch-github
+    spectacle
+    trayer
+    xsel
   ];
 
   xsession = {
@@ -31,6 +33,10 @@
 
       # turn off black Screensaver
       xset s off
+    '';
+
+    initExtra = ''
+      trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --height 21 --transparent true --tint 0x000000 --alpha 0 &
     '';
   };
 
