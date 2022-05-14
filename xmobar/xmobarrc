@@ -1,7 +1,8 @@
 Config {
-  font = "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true",
+  font = "xft:iosevka-9",
   bgColor = "black",
   fgColor = "grey",
+  position = TopW L 90, -- leave room for trayer
   commands =
     [
       Run Weather "KTHV" [
@@ -34,14 +35,20 @@ Config {
         "--high", "darkred"
       ] 10,
       Run Date "%a %b %_d %l:%M" "date" 10,
+      Run Alsa "default" "Master" [
+        "-t", "<volumestatus>",
+        "--suffix", "True",
+        "--",
+        "--on", ""
+      ],
       Run Kbd [
         ("us(dvorak)", "<fc=#4488FB>DV</fc>"),
         ("us", "<fc=#ee0000>US</fc>")
       ],
       Run Locks,
-      Run StdinReader
+      Run XMonadLog
     ],
   sepChar = "@",
   alignSep = "}{",
-  template = "@StdinReader@ }{ CPU: @multicoretemp@ @multicpu@ | Mem: @memory@ | <fc=#4488FB>@date@</fc> | @KTHV@ | <fc=#ee9a00>@locks@</fc> @kbd@"
+  template = "@XMonadLog@ }{ CPU: @multicoretemp@ @multicpu@ | Mem: @memory@ | <fc=#4488FB>@date@</fc> | @KTHV@ | Vol: <fc=#4488FB>@alsa:default:Master@</fc> | <fc=#ee9a00>@locks@</fc> @kbd@ |"
 }
