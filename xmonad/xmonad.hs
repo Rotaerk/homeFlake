@@ -4,14 +4,14 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
-import XMonad.Layout.Fullscreen
 import XMonad.Util.Loggers
 import XMonad.Util.EZConfig
 
 main =
   xmonad .
-  fullscreenSupportBorder . ewmh . -- These work together to give desired full-screen window behavior.
+  ewmhFullscreen . ewmh . -- Get desired full-screen window behavior.
   withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey . -- Run xmobar.
   id
   $
@@ -22,7 +22,9 @@ main =
     modMask = mod4Mask,
     focusFollowsMouse = False,
     clickJustFocuses = False,
-    terminal = "alacritty"
+    terminal = "alacritty",
+
+    layoutHook = smartBorders $ layoutHook def
   }
   `additionalKeysP`
   [
