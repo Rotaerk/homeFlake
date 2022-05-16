@@ -15,13 +15,20 @@
 
   home.packages = with pkgs; [
     bashmount
+    binutils
     discord
     dmenu
+    gcc
+    gmp
+    gnumake
     ncpamixer
+    ncurses
     nix-prefetch-github
     pavucontrol
     spectacle
     trayer
+    tree
+    unzip
     xsel
   ];
 
