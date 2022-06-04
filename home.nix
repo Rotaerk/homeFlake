@@ -18,6 +18,7 @@
     binutils
     discord
     dmenu
+    element-desktop
     gcc
     gmp
     gnumake
