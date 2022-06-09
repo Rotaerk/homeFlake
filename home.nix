@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     bashmount
     binutils
+    citrix_workspace
     discord
     dmenu
     element-desktop
