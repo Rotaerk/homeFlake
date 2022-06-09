@@ -74,6 +74,10 @@
           "media.eme.enabled" = true;
           "media.gmp-widevinecdm.enabled" = true;
           "media.gmp-widevinecdm.visible" = true;
+
+          # Remove annoying indicator that's shown when webcam or mic is in use via firefox.
+          "privacy.webrtc.legacyGlobalIndicator" = false;
+          "privacy.webrtc.hideGlobalIndicator" = true;
         };
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
