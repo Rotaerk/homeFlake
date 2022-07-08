@@ -7,6 +7,7 @@
   };
 
   imports = [
+    ./fcitx5
     ./gpg
     ./kakoune
     ./xmobar
