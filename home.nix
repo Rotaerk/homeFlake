@@ -24,6 +24,7 @@
     gcc
     gmp
     gnumake
+    msbuild
     ncpamixer
     ncurses
     nix-prefetch-github
