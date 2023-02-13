@@ -1,6 +1,11 @@
-{ nur }:
-{ config, pkgs, ... }:
+{ config, pkgs, nur, ... }:
 {
+  home = {
+    username = "rotaerk";
+    homeDirectory = "/home/rotaerk";
+    stateVersion = "22.05";
+  };
+
   nixpkgs = {
     config.allowUnfreePredicate = _: true;
     overlays = [ nur.overlay ];
@@ -33,6 +38,7 @@
     trayer
     tree
     unzip
+    xivlauncher
     xsel
   ];
 
@@ -81,11 +87,11 @@
           "privacy.webrtc.legacyGlobalIndicator" = false;
           "privacy.webrtc.hideGlobalIndicator" = true;
         };
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          sponsorblock
+          ublock-origin
+        ];
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        sponsorblock
-        ublock-origin
-      ];
     };
 
     git = {

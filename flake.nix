@@ -13,15 +13,14 @@
   outputs = { self, nixpkgs, home-manager, nur, ... }:
     let
       system = "x86_64-linux";
-      username = "rotaerk";
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        configuration = import ./home.nix { inherit nur; };
-
-        inherit system username;
-        homeDirectory = "/home/${username}";
-
-        stateVersion = "22.05";
+      homeConfigurations.rotaerk = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+        ];
+        extraSpecialArgs = { inherit nur; };
       };
     };
 }
