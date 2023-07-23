@@ -29,10 +29,12 @@
     gcc
     gmp
     gnumake
+    lutris
     msbuild
     ncpamixer
     ncurses
     nix-prefetch-github
+    pass-secret-service
     pavucontrol
     spectacle
     trayer
@@ -106,5 +108,15 @@
         PASSWORD_STORE_DIR = "/run/media/rotaerk/A45B-3882/.password-store";
       };
     };
+  };
+
+  services = {
+    gnome-keyring = {
+      enable = true;
+    };
+#    pass-secret-service = {
+#      enable = true;
+#      storePath = "/run/media/rotaerk/A45B-3882/.password-store";
+#    };
   };
 }
