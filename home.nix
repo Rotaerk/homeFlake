@@ -30,15 +30,18 @@
     gnumake
     lutris
     msbuild
+    mudlet
     ncpamixer
     ncurses
     nix-prefetch-github
+    p7zip
     pass-secret-service
     pavucontrol
     spectacle
     trayer
     tree
     unzip
+    wavemon
     xivlauncher
     xsel
   ];
