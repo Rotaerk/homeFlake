@@ -37,6 +37,7 @@
     p7zip
     pass-secret-service
     pavucontrol
+    ppsspp
     spectacle
     trayer
     tree
