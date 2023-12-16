@@ -42,6 +42,7 @@
     trayer
     tree
     unzip
+    usbimager
     wavemon
     xivlauncher
     xsel
