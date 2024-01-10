@@ -71,6 +71,13 @@
 
     alacritty.enable = true;
 
+    bash = {
+      enable = true;
+      bashrcExtra = ''
+        eval "$(direnv hook bash)"
+      '';
+    };
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -118,9 +125,5 @@
     gnome-keyring = {
       enable = true;
     };
-#    pass-secret-service = {
-#      enable = true;
-#      storePath = "/run/media/rotaerk/A45B-3882/.password-store";
-#    };
   };
 }
