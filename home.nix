@@ -71,12 +71,7 @@
 
     alacritty.enable = true;
 
-    bash = {
-      enable = true;
-      bashrcExtra = ''
-        eval "$(direnv hook bash)"
-      '';
-    };
+    bash.enable = true;
 
     direnv = {
       enable = true;
