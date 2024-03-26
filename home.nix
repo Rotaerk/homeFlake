@@ -28,12 +28,15 @@
     gcc
     gmp
     gnumake
+    kdenlive
     lutris
+    mpv
     msbuild
     mudlet
     ncpamixer
     ncurses
     nix-prefetch-github
+    obs-studio
     p7zip
     pass-secret-service
     pavucontrol
@@ -44,6 +47,7 @@
     unzip
     usbimager
     wavemon
+    xorg.xdpyinfo
     xivlauncher
     xsel
   ];
