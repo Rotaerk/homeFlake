@@ -46,6 +46,7 @@
     tree
     unzip
     usbimager
+    vesktop
     wavemon
     xorg.xdpyinfo
     xivlauncher
