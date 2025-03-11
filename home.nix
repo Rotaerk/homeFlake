@@ -8,7 +8,7 @@
 
   nixpkgs = {
     config.allowUnfreePredicate = _: true;
-    overlays = [ nur.overlay ];
+    overlays = [ nur.overlays.default ];
   };
 
   imports = [
@@ -28,10 +28,9 @@
     gcc
     gmp
     gnumake
-    kdenlive
+    kdePackages.kdenlive
     lutris
     mpv
-    msbuild
     mudlet
     ncpamixer
     ncurses
@@ -41,7 +40,7 @@
     pass-secret-service
     pavucontrol
     ppsspp
-    spectacle
+    kdePackages.spectacle
     trayer
     tree
     unzip
@@ -100,7 +99,7 @@
           "privacy.webrtc.legacyGlobalIndicator" = false;
           "privacy.webrtc.hideGlobalIndicator" = true;
         };
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           sponsorblock
           ublock-origin
         ];
