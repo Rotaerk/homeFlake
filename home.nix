@@ -19,6 +19,7 @@
   ];
 
   home.packages = with pkgs; [
+    aseprite
     bashmount
     binutils
     citrix_workspace
